@@ -107,7 +107,7 @@ class MessageGeneration {
   /// Generate a file <[generated_file_prefix]>_messages_<[locale]>.dart
   /// for the [translations] in [locale] and put it in [targetDir].
   void generateIndividualMessageFile(String basicLocale,
-      Iterable<TranslatedMessage> translations, String targetDir) {
+      Set<TranslatedMessage> translations, String targetDir) {
     final fileName = '${generatedFilePrefix}messages_$basicLocale.dart';
     final content = contentForLocale(basicLocale, translations);
     final formattedContent = formatDartContent(content, fileName);
@@ -121,7 +121,7 @@ class MessageGeneration {
   /// Generate a string that contains the dart code
   /// with the [translations] in [locale].
   String contentForLocale(
-      String basicLocale, Iterable<TranslatedMessage> translations) {
+      String basicLocale, Set<TranslatedMessage> translations) {
     clearOutput();
     var locale = MainMessage()
         .escapeAndValidateString(Intl.canonicalizedLocale(basicLocale));

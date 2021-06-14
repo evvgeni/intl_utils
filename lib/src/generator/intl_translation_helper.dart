@@ -104,12 +104,13 @@ class IntlTranslationHelper {
   }
 
   void _generateLocaleFile(
-      String locale, List<Map> localeData, String targetDir) {
-    var translations = <TranslatedMessage>[];
-    for (var jsonTranslations in localeData) {
+      String locale, List<Map> localeDataByPriority, String targetDir) {
+    var translations = <TranslatedMessage>{};
+    for (var jsonTranslations in localeDataByPriority) {
       jsonTranslations.forEach((id, messageData) {
         TranslatedMessage? message = _recreateIntlObjects(id, messageData);
         if (message != null) {
+          translations.remove(message);
           translations.add(message);
         }
       });
