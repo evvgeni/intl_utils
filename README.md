@@ -69,3 +69,13 @@ Notes:
 Argument `project-id` can be omitted if `pubspec.yaml` file contains `project_id` configuration under `flutter_intl/localizely` section.  
 Argument `api-token` can be omitted if `~/.localizely/credentials.yaml` file contains `api_token` configuration.  
 Optional argument `arb-dir` has the value `lib/l10n` as default and needs only to be set, if you want to place your ARB files in a custom directory.
+
+### Standalone Boilerplate Generation
+
+If you need just flexible boilerplate generation, there's the `generate_from_arb` command:
+```
+flutter pub run intl_utils:generate_from_arb \
+  --output-dir <dir> \
+  <string_file_1.dart string_file_2.dart ...> \
+  <some.arb another.arb ...>
+```
